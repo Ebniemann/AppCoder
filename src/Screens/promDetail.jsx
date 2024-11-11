@@ -41,7 +41,6 @@ const PromotionDetail = () => {
               <Text style={styles.price}>${item.price}</Text>
               <Text style={styles.discount}>{item.discount}% OFF</Text>
               <Text>Precio Final: {item.priceDicount}</Text>
-              <Text>{item.category}</Text>
             </View>
           </View>
 

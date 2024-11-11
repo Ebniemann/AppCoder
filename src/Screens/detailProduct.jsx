@@ -7,17 +7,17 @@ import { colors } from "../Global/colors";
 
 const { width } = Dimensions.get('window');
 
-const DetailProduct = ({navigation}) => {
+const DetailProduct = ({ navigation }) => {
 
-  dispatch= useDispatch()
+  dispatch = useDispatch()
 
   const product = useSelector((state) => state.shopReducer.productSelected);
 
   const { data: productData, error, isLoading } = useGetProductQuery(product?.id, {
-    skip: !product?.id, 
+    skip: !product?.id,
   });
-  
-  
+
+
   const ProductItem = ({ item }) => (
     <View style={styles.productContainer}>
       <View style={styles.newProduct}>
@@ -26,8 +26,17 @@ const DetailProduct = ({navigation}) => {
         <Text style={styles.text}>{item.shortDescription}</Text>
         <Text>{item.longDescription}</Text>
         <Text style={styles.price}>${item.price}</Text>
-        <Text style={styles.discount}>{item.discount}% OFF</Text>
-        <Pressable style={styles.cart}  source={require('../Icons/cart.png')}  onPress={()=> {dispatch(addItemCart(item.id)), navigation.navigate('Carrito')}}/>
+        {
+          item.discount & item.discount > 0 ?
+            <Text style={styles.discount}>{item.discount}% OFF</Text>
+            :
+            null
+        }
+
+        <Pressable onPress={() => dispatch(addItemCart(item))}>
+          <Text>Añadir al carrito</Text>
+        </Pressable>
+
       </View>
     </View>
   );
@@ -82,7 +91,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.purple
   },
-  cart:{
+  cart: {
     width: 15,
     height: 15
   }

@@ -40,40 +40,71 @@ export const cartSlice = createSlice({
       }
 
       state.totalPrice = totalCart(state.itemsCart);
-
-      console.log("Carrito actualizado:", state.itemsCart);
-      console.log("Precio total:", state.totalPrice);
     },
 
     applyDiscount: (state) => {
-      let itemsModified = false;
+      // Si no hay items o no hay descuento, no hacer nada
+      if (state.itemsCart.length === 0 || !state.discount) return;
+
+      let totalModified = false;
+
+      // Actualizar los items con descuento
       state.itemsCart = state.itemsCart.map((item) => {
-        if (item.discount && item.discount > 0) {
-          const priceDiscount = discount(item.price, item.discount);
-          if (item.priceDiscount !== priceDiscount) {
-            itemsModified = true;
-            return {
-              ...item,
-              priceDiscount: priceDiscount,
-            };
+        // Si no existe priceDiscount, lo inicializamos en 0
+        const priceDiscount = item.priceDiscount || 0;
+
+        // Solo aplicamos descuento si hay uno y el precio cambia
+        let newPriceDiscount = priceDiscount;
+
+        if (item.discount > 0) {
+          newPriceDiscount = discount(item.price, item.discount);
+          // Si el descuento cambió el precio, marcamos que se modificó
+          if (newPriceDiscount !== priceDiscount) {
+            totalModified = true;
           }
         }
+
         return {
           ...item,
-          priceDiscount: priceDiscount,
+          priceDiscount: newPriceDiscount,
+          subTotal: newPriceDiscount * item.quantity,
         };
       });
-      if (itemsModified) {
-        state.totalPrice = totalCart(state.itemsCart);
+
+      if (totalModified) {
+        state.totalPrice = state.itemsCart.reduce(
+          (total, item) => total + item.subTotal,
+          0
+        );
       }
     },
 
     removeItemCart: (state, action) => {
-      state.itemsCart = state.itemsCart.filter(
-        (item) => item.id != action.payload.id
+      const itemToRemove = state.itemsCart.find(
+        (item) => item.id === action.payload.id
       );
+
+      if (itemToRemove) {
+        if (itemToRemove.quantity > 1) {
+          itemToRemove.quantity -= 1;
+
+          itemToRemove.subTotal =
+            itemToRemove.discount && itemToRemove.discount > 0
+              ? discount(itemToRemove.price, itemToRemove.discount) *
+                itemToRemove.quantity
+              : itemToRemove.price * itemToRemove.quantity;
+        } else {
+          state.itemsCart = state.itemsCart.filter(
+            (item) => item.id !== action.payload.id
+          );
+        }
+      }
+
       state.totalPrice = totalCart(state.itemsCart);
-      state.quantity -= 1;
+      state.quantity = state.itemsCart.reduce(
+        (total, item) => total + item.quantity,
+        0
+      );
     },
 
     clearCart: (state) => {

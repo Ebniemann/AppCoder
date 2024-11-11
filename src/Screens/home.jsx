@@ -40,9 +40,6 @@ const Home = ({ navigation }) => {
               <Text style={styles.text}>{item.title}</Text>
               <Text style={styles.text}>{item.shortDescription}</Text>
               <Text style={styles.price}>${item.price}</Text>
-              <Pressable onPress={()=> dispatch(addItemCart(item))}>
-                <Text>Añadir al carrito</Text>
-              </Pressable>
             </View>
           </Pressable>
         )}
