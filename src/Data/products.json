@@ -1,0 +1,610 @@
+[
+  {
+    "id": 16,
+    "title": "Adhesivo en Tira",
+    "shortDescription": "Adhesivo en Tira Cinta Doble Faz Ibi Craft 5mm 3mts Retractil",
+    "longDescription": "Su sistema retráctil imprime una tira de puntos adhesivos uniformes y muy prolijos.",
+    "price": 2760,
+    "stock": 10,
+    "brand": "adhesivo",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/papel-craft/adhesivo-en-tira.png"
+  },
+  {
+    "id": 17,
+    "title": "Base Perforadora",
+    "shortDescription": "Base de Perforado KW-triO Abecedario",
+    "longDescription": "Base de perforadora alfabeto 26 letras",
+    "price": 123150,
+    "stock": 10,
+    "brand": "perforadora",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/papel-craft/base-perforadoras.png"
+  },
+  {
+    "id": 18,
+    "title": "Bisturí",
+    "shortDescription": "Bisturí Cutter de Precisión + 5 Láminas de Reposición Brw.",
+    "longDescription": "El material del mango es: metal. El ancho de la hoja es 6mm. Color turquesa, de hoja fina.",
+    "price": 5120,
+    "stock": 10,
+    "brand": "bisturi",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/bisturi.png"
+  },
+  {
+    "id": 19,
+    "title": "Caja Organizadora",
+    "shortDescription": "Caja Organizadora Plastica Multiuso 9 Divisiones",
+    "longDescription": "Caja multiuso con 9 divisiones fijas, Cada division mide: 3,2 cm x 4,2 cm. Medida total: 13.5 x 11 x 5 cm",
+    "price": 4800,
+    "stock": 40,
+    "brand": "organizador",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/caja-organizador.png"
+  },
+  {
+    "id": 20,
+    "title": "Cutter Gatito",
+    "shortDescription": "Twingo Cutter Garrita de Gatito de Color Gris Glitter",
+    "longDescription": "Facil de agarrar, practico, retráctil",
+    "price": 3500,
+    "stock": 12,
+    "brand": "cutter",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/cutter-gatito.png"
+  },
+  {
+    "id": 21,
+    "title": "Goma Eva Glitter Pasteles",
+    "shortDescription": "Goma Eva Glitter Ibi Craft A4 2mm x5 Iridiscente Rosa Pastel",
+    "longDescription": "GOMA EVA x 5 Unidades. Medidas: 20 x 30 cm",
+    "price": 2200,
+    "stock": 15,
+    "brand": "goma-eva",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/gama-eva-pastel.png"
+  },
+  {
+    "id": 22,
+    "title": "Goma Eva Glitter",
+    "shortDescription": "Goma Eva Glitter Ibi Craft A4 2mm x5 Azul",
+    "longDescription": "GOMA EVA x 5 Unidades. Medidas:  20 x 30 cm",
+    "price": 2200,
+    "stock": 14,
+    "brand": "goma-eva",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": ""
+  },
+  {
+    "id": 23,
+    "title": "Goma Eva Glitter",
+    "shortDescription": "Goma Eva Glitter Ibi Craft A4 2mm x5 Lila",
+    "longDescription": "GOMA EVA x 5 Unidades. Medidas:  20 x 30 cm",
+    "price": 2200,
+    "stock": 22,
+    "brand": "goma-eva",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/goma-eva-lila.png"
+  },
+  {
+    "id": 24,
+    "title": "Mini Abrochadora",
+    "shortDescription": "Mini Abrochadora Color Pastel Celeste Usa Broches 26/6 Marca Brw",
+    "longDescription": "Diseño moderno y ligero. Contiene estructura metálica de acero, cuerpo y base de plástico de 6,8 cm. Muelle de retracción automático y extractor de grapas. Grapa hasta 20 hojas de 75g / m² (pueden ser mas variando según el gramaje del papel y la grapa elegida).",
+    "price": 2900,
+    "stock": 27,
+    "brand": "abrochadora",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/mini-abrochadora.png"
+  },
+  {
+    "id": 25,
+    "title": "Tira para Origami",
+    "shortDescription": "Tiras para Estrellas Pastel x1",
+    "longDescription": "Tiras de Papel de 2X50 cm,  de 1 unidades surtidas por motivos de la Colección Pastel en tiras bicolor: amarillo/lila – rosa/verde. Para divertirse plegando mini estrellitas, hacer guirnaldas, decorar tarjetas y muchas cosas más.",
+    "price": 7090,
+    "stock": 4,
+    "brand": "origami",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/papel-craft/origami.png"
+  },
+  {
+    "id": 26,
+    "title": "Pistola Encoladora",
+    "shortDescription": "Pistola Encoladora MoTex Ibi Craft 30w Pastel Verde",
+    "longDescription": "Pega papel, madera, tela, foam, goma eva, plàstico y mucho más. Ideal para hobbies y manualidades. Repara, sella, pega, decora. Potencia: 30w.",
+    "price": 11400,
+    "stock": 10,
+    "brand": "silicona",
+    "category": "papel-craft",
+    "discount": 10,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/pistola.png"
+  },
+  {
+    "id": 27,
+    "title": "Sello Rotativo",
+    "shortDescription": "Sello Rotativo Love + Almohadilla IbiCraft",
+    "longDescription": "Love 12 motivos. Tus ideas con forma de sellos, llegó el momento de sellar tus ideas sobre todo lo que quieras!. Su práctico sistema tipo rodillo te permite elegir que palabra vas a sellar y hasta sellar con diferentes colores de almohadilla.",
+    "price": 7300,
+    "stock": 17,
+    "brand": "sellos",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/papel-craft/sello.png"
+  },
+  {
+    "id": 28,
+    "title": "Set oficina",
+    "shortDescription": "Set de Oficina Escritorio Ibi Craft Tendance Rosa Pastel",
+    "longDescription": "Si querés renovar tus espacios, podés usar colores brillantes, y de manera muy fácil y económica cambiar tu decoración, cuantas veces quieras!!. Probá nuestro set de escritorio ibi craft disponible en 4 colores !. CONTIENE : BINDER CLIPS + CHINCES GALERA + CLIPS PAPER + BANDAS ELASTICA. ROSA PASTEL",
+    "price": 8600,
+    "stock": 18,
+    "brand": "kit",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/set-oficina.png"
+  },
+  {
+    "id": 29,
+    "title": "Set Tijeras",
+    "shortDescription": "Set Tijeras X 3",
+    "longDescription": "Cuchilla de acero inoxidable de alta prestaciòn, 21   5/16   5/10 cm. Elegì el tamaño que necesitas para cortar en forma còmoda y precisa cada una de tus manualidades. Ideal para cortes delicados y precisos, costura y manualidades. Muy confortables y maniobrables. Su diseño compacto facilita el corte de formas complejas y delicadas",
+    "price": 17800,
+    "stock": 22,
+    "brand": "tijera",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/set-tijeras-por-3.png"
+  },
+  {
+    "id": 30,
+    "title": "Silicona Líquida",
+    "shortDescription": "Silicona Liquida Adhesivo Muliproposito IBI x100ml",
+    "longDescription": "Pega PAPEL, CARTON, PLÁSTICO, TELA, VIDRIO, etc. NO CONTIENE TOLUENO",
+    "price": 1960,
+    "stock": 10,
+    "brand": "silicona",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/silicona-liquida.png"
+  },
+  {
+    "id": 31,
+    "title": "Silicona en Barra",
+    "shortDescription": "Barra Silicona Fina Transparente",
+    "longDescription": "MEDIDAS: 7,2mm x 27cm Cristal",
+    "price": 285,
+    "stock": 19,
+    "brand": "silicona",
+    "category": "papel-craft",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papel-craft/silicona-transparente.png"
+  },
+  {
+    "id": 32,
+    "title": "Agenda Para Pintar",
+    "shortDescription": "Agenda para Pintar Perpetua Punto Cero Florcitas Lilas",
+    "longDescription": "¡Nuevo modelo súper creativo y divertido, con carátulas todos los meses para pintar y liberar la mente! Formato perpetuo con 2 días por hoja 🙂. Agenda perpetua con interior 2 días por hoja en color rosa y negro. Tamaño A5 (15X21 cm). Con horarios de 8 a 20 hs. Carátulas de papel cada mes. Planificadores mensuales y gastos. Toda la agenda tiene dibujos para pintar. Hojas de 90 gramos",
+    "price": 28800,
+    "stock": 11,
+    "brand": "agenda",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/papelera/agenda-para-pintar-complemento-1.png"
+  },
+  {
+    "id": 33,
+    "title": "Cuaderno A5 Intuición",
+    "shortDescription": "Cuaderno A5 T/D Rayado Punto Cero Intuición",
+    "longDescription": "Este cuaderno con tapa dura y bolsillo contenedor tiene el tamaño perfecto para llevarlo en cualquier lado!. Viene con 80 hojas rayadas, cuadriculadas o lisas de 80 gramos!. Tamaño: A5 (15x21cm). Tapa dura con polipropileno mate y laca sectorizada brillante",
+    "price": 8400,
+    "stock": 10,
+    "brand": "cuaderno",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papelera/cuaderno-a-5-confia.png"
+  },
+  {
+    "id": 34,
+    "title": "Cuaderno A5 Arcoiris",
+    "shortDescription": "Cuaderno A5 T/D Rayado Punto Cero Arcoiris",
+    "longDescription": "Este cuaderno con tapa dura y bolsillo contenedor tiene el tamaño perfecto para llevarlo en cualquier lado!. Viene con 80 hojas rayadas, cuadriculadas o lisas de 80 gramos!. Tamaño: A5 (15x21cm). Tapa dura con polipropileno mate y laca sectorizada brillante",
+    "price": 8400,
+    "stock": 10,
+    "brand": "cuaderno",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papelera/cuaderno-A5.png"
+  },
+  {
+    "id": 35,
+    "title": "Cuaderno A5 Se Feliz",
+    "shortDescription": "Cuaderno A5 T/D Rayado Punto Cero Se Feliz",
+    "longDescription": "Este cuaderno con tapa dura y bolsillo contenedor tiene el tamaño perfecto para llevarlo en cualquier lado!. Viene con 80 hojas rayadas, cuadriculadas o lisas de 80 gramos!. Tamaño: A5 (15x21cm). Tapa dura con polipropileno mate y laca sectorizada brillante",
+    "price": 8400,
+    "stock": 17,
+    "brand": "cuaderno",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papelera/cuaderno-escolar-rayado.png"
+  },
+  {
+    "id": 36,
+    "title": "Eco Block de Hojas",
+    "shortDescription": "Eco Block de Hojas Rayadas A5 Punto Cero Liberate",
+    "longDescription": "Block tamaño A5 (15×21 cm) con 80 hojas rayadas de papel econatural de 75 gramos. ¡100% caña de azúcar y sin blanqueadores químicos!",
+    "price": 4300,
+    "stock": 14,
+    "brand": "libreta",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papelera/ecoblock-liberate-A4.png"
+  },
+  {
+    "id": 37,
+    "title": "Repuesto A4",
+    "shortDescription": "Repuesto A4 Puntos Guia Degradé",
+    "longDescription": "Vienen en pack de 40 hojas, 10 de cada motivo. Las hojas son de 120 gramos! Súper resistentes 🙂 Tienen 5 perforaciones para que puedas usarlos en tu carpeta. Tienen degrade con puntos guía.",
+    "price": 7200,
+    "stock": 10,
+    "brand": "repuesto",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/papelera/hojas-A4-degrade.png"
+  },
+  {
+    "id": 38,
+    "title": "Panel Organizador Semanal Flores",
+    "shortDescription": "Mi Punto Cero ♥ Panel Organizador semanal",
+    "longDescription": "Creamos este panel para que puedas personalizar cualquiera de nuestras agendas y organizar tu semana! Es compatible con cualquier tamaño de agenda 🙂 Block x40 hojas de 90 gramos de organizador semanal, con la perforación removible de la colección Mi Punto Cero! Medida: 13X19 cm",
+    "price": 5400,
+    "stock": 15,
+    "brand": "repuesto",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/papelera/organizador.png"
+  },
+  {
+    "id": 39,
+    "title": "Panel Organizador Semanal Multicolor",
+    "shortDescription": "Mi Punto Cero ♥ Panel Organizador semanal",
+    "longDescription": "Creamos este panel para que puedas personalizar cualquiera de nuestras agendas y organizar tu semana! Es compatible con cualquier tamaño de agenda 🙂 Block x40 hojas de 90 gramos de organizador semanal, con la perforación removible de la colección Mi Punto Cero! Medida: 13X19 cm",
+    "price": 5400,
+    "stock": 10,
+    "brand": "repuesto",
+    "category": "papelera",
+    "discount": 5,
+    "outstanding": false,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/papelera/organizador-dos.png"
+  },
+  {
+    "id": 40,
+    "title": "Separador Oscuro",
+    "shortDescription": "MI Separador con Solapa A5 Punto Cero Oscuro",
+    "longDescription": "Para que tu cuaderno no se termine NUNCA. Solapas A5 con perforaciones para sacar, mover y agregar al cuaderno. Tamaño: A5 (15x21cm). Contiene: 4 SOLAPAS (4 Diseños Distintos). Las HOJAS son REMOVIBLES. Hojas de 250g.",
+    "price": 1780,
+    "stock": 20,
+    "brand": "separador",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/papelera/separadores-A5-oscuro.png"
+  },
+  {
+    "id": 41,
+    "title": "Separador Flores",
+    "shortDescription": "MI Separador con Solapa A5 Punto Cero Flores",
+    "longDescription": "Para que tu cuaderno no se termine NUNCA. Solapas A5 con perforaciones para sacar, mover y agregar al cuaderno. Tamaño: A5 (15x21cm). Contiene: 4 SOLAPAS (4 Diseños Distintos). Las HOJAS son REMOVIBLES. Hojas de 250g.",
+    "price": 1780,
+    "stock": 30,
+    "brand": "separador",
+    "category": "papelera",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/papelera/separadores-colores-A5.png"
+  },
+  {
+    "id": 42,
+    "title": "Agenda Floreal",
+    "shortDescription": "Agenda Moderna Hoja por Dia Punto Cero Botanico",
+    "longDescription": "Agenda 2025. Tamaño 14X19 cm. Con elástico. Hoja por día con horarios de 8 a 21hs. Carátulas de papel al comienzo de cada mes. Planificadores mensuales. Sobre a todo color. Tracker de hábitos y gastos. Hojas de 80gr",
+    "price": 33900,
+    "stock": 2,
+    "brand": "agenda",
+    "category": "regalo",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/regalos/agenda-dos.png"
+  },
+  {
+    "id": 43,
+    "title": "Agenda Moños",
+    "shortDescription": "Agenda Moderna Hoja por Dia Punto Cero Moños",
+    "longDescription": "Agenda 2025. Tamaño 14X19 cm. Con elástico. Hoja por día con horarios de 8 a 21hs. Carátulas de papel al comienzo de cada mes. Planificadores mensuales. Sobre a todo color. Tracker de hábitos y gastos. Hojas de 80gr",
+    "price": 33900,
+    "stock": 0,
+    "brand": "agenda",
+    "category": "regalo",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/regalos/agenda-monos.png"
+  },
+  {
+    "id": 44,
+    "title": "Agenda 2025",
+    "shortDescription": "Agenda Premium Punto Cero Ignora",
+    "longDescription": "Agenda 2025. Tamaño 14X19 cm. Con elástico. Hoja por día con horarios de 8 a 21hs. Carátulas de papel al comienzo de cada mes. Planificadores mensuales. Sobre a todo color. Tracker de hábitos y gastos. Hojas de 80gr",
+    "price": 52600,
+    "stock": 2,
+    "brand": "agenda",
+    "category": "regalo",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/regalos/agenda.png"
+  },
+  {
+    "id": 45,
+    "title": "Marcador Glitter",
+    "shortDescription": "Marcador PC-3ML Glitter Color Pack x8",
+    "longDescription": "Pack x 8 colores. Da un acabado de color brillante a la mayoría de los materiales de arte, artesanía y hobby. Resistente a la luz y al agua",
+    "price": 41900,
+    "stock": 2,
+    "brand": "marcador",
+    "category": "regalo",
+    "discount": 10,
+    "outstanding": false,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/regalos/marcador-glitter.png"
+  },
+  {
+    "id": 46,
+    "title": "Organizador de Escritorio",
+    "shortDescription": "Organizador de Escritorio Diamond Crafter Cristal Rosa Ibi Craft",
+    "longDescription": "Fabricado en acrílico de alta calidad para asegurar una larga durabilidad. Material de Acrílico Rosa transparente para visualizar los productos. Dimensiones : 24 cm. ancho x 18,5 cm.altura x 15 cm. profundidad. Calidad Premium",
+    "price": 33200,
+    "stock": 1,
+    "brand": "organizador",
+    "category": "regalo",
+    "discount": 0,
+    "outstanding": true,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/regalos/organizador-diamond.png"
+  },
+  {
+    "id": 46,
+    "title": "Organizador de Escritorio Multicolor",
+    "shortDescription": "Organizador de Escritorio Multipaper c/Cajon Tornasolado",
+    "longDescription": "Organiza tus accesorios de una manera mas clara y eficiente, agrega orden con estilo para no perder tus cosas! Con Cajon. Tornasolado. Dimensiones : 22 cm. ancho x 12 cm.altura x 14 cm. profundidad. Calidad Premium",
+    "price": 52000,
+    "stock": 1,
+    "brand": "organizador",
+    "category": "regalo",
+    "discount": 15,
+    "outstanding": false,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/regalos/organizador-multicolor.png"
+  },
+  {
+    "id": 47,
+    "title": "Riñonera Negra",
+    "shortDescription": "Riñonera Chimola Be Happy Black",
+    "longDescription": "Composicion: 100% Nylon. Linning: 80% Polyester 20% Cotton. Colores: BLACK. Medidas: Ancho 23cm, Alto 16cm, Profundidad 7cm",
+    "price": 32200,
+    "stock": 3,
+    "brand": "riñonera",
+    "category": "regalo",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "new"
+    ],
+    "image": "../images/regalos/rinonera.png"
+  },
+  {
+    "id": 48,
+    "title": "Set Giotto",
+    "shortDescription": "Giotto 90 Stilnovo.50 + Turbo.Color 40",
+    "longDescription": "Increíble caja ideal para regalo que incluye el mayor sueño de los amantes de Giotto: Toda la gama de Lápices de colores Stilnovo +  colores de marcadores Turbo color! En hermosa caja de doble piso.",
+    "price": 49100,
+    "stock": 7,
+    "brand": "set",
+    "category": "regalo",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/regalos/set-giotto.jpg"
+  },
+  {
+    "id": 49,
+    "title": "Set Lapices",
+    "shortDescription": "Lapiz LYRA Rembrandt Polycolor Lata x24",
+    "longDescription": "Lápices de alta calidad creados para profesionales de las artes y del diseño. Su amplia variedad de colores permite la máxima expresión. La pigmentación de la mina hace que sea RESISTENTE  a la luz. Disponible: Lata de 24 colores. Lápices de colores para artistas.",
+    "price": 49600,
+    "stock": 3,
+    "brand": "set",
+    "category": "regalo",
+    "discount": 10,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/regalos/set-lapices.png"
+  },
+  {
+    "id": 50,
+    "title": "Mochila Fantasy",
+    "shortDescription": "Mochila Chimola Carro Holo 17″  Future Fantasy",
+    "longDescription": "Tiene un bolsillo holográfico y elásticos cruzados que se llevan todas las miradas, y que con el sol genera distintos efectos. ¡Es lo más de lo más! \n Además cuenta con tela impermeable, para que ante cualquier imprevisto, tus útiles y libros estén protegidos. Sus correas acolchadas son como dos nubes, para que puedas llevarla en tu espalda en caso de que lo prefieras. \n Su carro con 3 ruedas de silicona, que es la última tecnología del mercado, proporciona un andar cómodo y ligero. \n Medidas: Ancho: 30,5cm, Alto: 46cm, Profundidad: 13cm",
+    "price": 96000,
+    "stock": 10,
+    "brand": "mochila",
+    "category": "regalo",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/regalos/mochila-17-pulgadas.png"
+  },
+  {
+    "id": 51,
+    "title": "Mochila Yellow",
+    "shortDescription": "Mochila Chimola Carro Elásticos 18″ Yellow",
+    "longDescription": "Cuenta con tela impermeable para que ante cualquier imprevisto, tus útiles y libros se mantengan resguardados. Su carro además de ser reforzado, también tiene 3 ruedas de silicona, última tecnología del mercado, que hace que su transporte sea ágil. \n Sus bolsillos laterales cuentan con espacio para tu botella de agua. Y, en su bolsillo de red delantero podes guardar algún accesorio. \n Encontrala en sus diferentes colores: Pink, Yellow, Black y Light Purple. \n Medidas: Ancho: 30cm, Alto: 45cm, Profundidad: 22cm",
+    "price": 96600,
+    "stock": 10,
+    "brand": "mochila",
+    "category": "regalo",
+    "discount": 0,
+    "outstanding": false,
+    "tags": [
+      "classic"
+    ],
+    "image": "../images/regalos/mochila-18-pulgadas.png"
+  },
+  {
+    "id": 52,
+    "title": "Mochila Black",
+    "shortDescription": "Mochila Chimola Carro 17″ Trendy Colour Black",
+    "longDescription": "Mochila con carro 17″ de nylon. Carro extensible y 3 ruedas de silicona reforzadas. Bolsillos a los costados con red. Bolsillos frontales con cierre y red. Cierres plásticos diente grueso. Herrajes de tiradores de silicona con diseño. Correas largas soft regulables. Interior forrado estampado. \n Medidas: Ancho 32cm / Alto 43cm / Profundidad 15cm",
+    "price": 105300,
+    "stock": 9,
+    "brand": "mochila",
+    "category": "regalo",
+    "discount": 20,
+    "outstanding": false,
+    "tags": [
+      "popular"
+    ],
+    "image": "../images/regalos/mochila-carro-negra.png"
+  }
+]

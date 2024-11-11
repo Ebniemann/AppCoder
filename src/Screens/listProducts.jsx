@@ -1,0 +1,111 @@
+import { View, Text, Image, Pressable, FlatList, StyleSheet, Dimensions, ActivityIndicator } from "react-native";
+import Layout from "../Components/layout";
+import { useGetProductsQuery, useGetProductsByCategoriesQuery } from "../Service/shopService";
+import Input from '../Components/input'
+import { useDispatch, useSelector } from "react-redux";
+import { setProductId } from "../Features/shop/shopSlice";
+import { Loader } from '../Components/loader'
+import { addItemCart } from "../Features/cart/cartSlice";
+import { colors } from "../Global/colors";
+
+
+
+const { width } = Dimensions.get('window')
+
+const ListProducts = ({ navigation }) => {
+  const dispatch = useDispatch()
+
+  const category = useSelector((state) => state.shopReducer.categorySelected)
+
+  const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
+  const { data: productsCategory, isLoading } = useGetProductsByCategoriesQuery(category)
+
+  const ProductItem = ({ item }) => {
+
+    return (
+      <View>
+        {
+          productsLoading ? (
+            <Loader />
+          ) : (
+            <Pressable style={styles.productContainer} onPress={() => { dispatch(setProductId(item.id)), navigation.navigate('Detalle del Producto') }} >
+              <View style={styles.newProduct}>
+                <Image source={{ uri: item.image }} style={styles.image} />
+                <Text style={styles.text}>{item.title}</Text>
+                <Text style={styles.text}>{item.shortDescription}</Text>
+                <Text style={styles.price}>${item.price}</Text>
+                {
+                  item.discount & item.discount > 0 ? 
+                  <Text style={styles.discount}>{item.discount}% OFF</Text> :
+                  null
+                }
+                
+                <Pressable onPress={()=> dispatch(addItemCart(item))}>
+                  <Text>
+                  Añadir al carrito
+                  </Text>
+                  </Pressable>
+              </View>
+            </Pressable>
+          )
+        }
+      </View>
+
+
+    )
+  }
+
+  return (
+    isLoading ? (<ActivityIndicator size='small' />)
+     :
+      error ? (<Text>Error de carga</Text>)
+        :
+        <Layout>
+          <Input placeholder={'...'} />
+          <FlatList
+            data={category ? productsCategory : products}
+            keyExtractor={(item) => item.id}
+            renderItem={ProductItem}
+            ListEmptyComponent={<Text>No hay productos disponibles.</Text>}
+          />
+        </Layout>
+  )
+}
+
+
+export default ListProducts
+
+const styles = StyleSheet.create({
+  productContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: width,
+    marginBottom: 30
+  },
+  newProduct: {
+    width: 200,
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 10
+  },
+  image: {
+    width: 200,
+    height: 200,
+  },
+  text: {
+    width: '100%',
+    textAlign: 'center',
+    flexShrink: 1,
+  },
+  price: {
+    width: '100%',
+    textAlign: 'center',
+    marginTop: 5,
+    fontWeight: 'bold',
+  },
+  discount: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.purple
+  }
+})
