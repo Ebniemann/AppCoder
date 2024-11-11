@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
-import Navigator from "./src/Navigation/navigator";
+import MainNavigator from "./src/Navigation/mainNavigator";
 import { Provider } from "react-redux";
 import { store } from "./src/app/store";
 
@@ -8,7 +8,7 @@ import { store } from "./src/app/store";
 export default function App() {
   return (
     <Provider store={store}>
-      <Navigator />
+      <MainNavigator />
       <StatusBar />
     </Provider>
   );

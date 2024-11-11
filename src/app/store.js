@@ -12,11 +12,13 @@ export const store = configureStore({
     cartReducer,
     [locationApi.reducerPath]: locationApi.reducer,
     [orderApi.reducerPath]: orderApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(shopApi.middleware)
       .concat(locationApi.middleware)
-      .concat(orderApi.middleware),
+      .concat(orderApi.middleware)
+      .concat(authApi.middleware),
 });
