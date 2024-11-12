@@ -4,6 +4,8 @@ import cartReducer from "../Features/cart/cartSlice";
 import { shopApi } from "../Service/shopService";
 import { locationApi } from "../Service/locationService";
 import { orderApi } from "../Service/orderService";
+import { authApi } from "../Service/authService";
+import authReducer from "../Features/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +15,7 @@ export const store = configureStore({
     [locationApi.reducerPath]: locationApi.reducer,
     [orderApi.reducerPath]: orderApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    authReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

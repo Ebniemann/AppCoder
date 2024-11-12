@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { colors } from '../Global/colors'; // Asegúrate de importar el archivo de colores
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
+import { colors } from '../Global/colors';
+import { useSignInMutation } from '../Service/authService';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser } from '../Features/auth/authSlice'; 
 
-const SignInScreen = ({ navigation }) => {
+const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSignIn = () => {
-    // Lógica de autenticación
-    console.log('Sign In with', email, password);
-    // Aquí iría la lógica para autenticar al usuario
+  const [triggerSignIn] = useSignInMutation();
+  const dispatch = useDispatch();
+
+
+  const userSession = useSelector((state) => state.authReducer.user);
+
+  useEffect(() => {
+    if (userSession && userSession.email) {
+      console.log('Session actualizada', userSession);
+      navigation.navigate('Cart');
+    }
+  }, [userSession]); 
+
+  const handleSignIn = async () => {
+    setLoading(true);
+    try {
+      const result = await triggerSignIn({ email, password }).unwrap();
+      console.log('resultado inicio sesion', result);
+
+      dispatch(setUser(result.data));
+
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -32,16 +58,18 @@ const SignInScreen = ({ navigation }) => {
         secureTextEntry
       />
       
-      <TouchableOpacity style={styles.button} onPress={handleSignIn}>
-        <Text style={styles.buttonText}>Iniciar Sesión</Text>
-      </TouchableOpacity>
+      <Pressable style={styles.button} onPress={handleSignIn}>
+        <Text style={styles.buttonText}> {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}</Text>
+      </Pressable>
       
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+      <Pressable onPress={() => navigation.navigate('SignUp')}>
         <Text style={styles.linkText}>Registrate</Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 };
+
+export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
@@ -84,5 +112,3 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
-
-export default SignInScreen;

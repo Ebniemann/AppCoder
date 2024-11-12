@@ -5,6 +5,7 @@ export { default as DetailProduct } from "./detailProduct.jsx";
 export { default as PromotionList } from "./promDetail.jsx";
 export { default as Cart } from "./cart.jsx";
 export { default as Location } from "./location.jsx";
-export { default as Order } from "./order.js";
+export { default as Order } from "./order.jsx";
 export { default as SignIn } from "./signIn.jsx";
 export { default as SignUp } from "./signUp.jsx";
+export { default as UserProfile } from "./userProfile.jsx";

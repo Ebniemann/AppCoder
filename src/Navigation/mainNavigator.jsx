@@ -1,14 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { useState } from "react";
-import NavigatorShop from "./navigatorShop";
-import AuthNavigator from "./authNavigator";
+import AppShop from "./appShop";
+
 
 
 const MainNavigator=()=>{
-  const [user, setUser] = useState(null)
   return(
    <NavigationContainer>
-      { user? <NavigatorShop/> : <AuthNavigator/>}
+    <AppShop/> 
    </NavigationContainer>
 
   )

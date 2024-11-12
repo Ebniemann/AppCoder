@@ -14,15 +14,13 @@ const Cart = ({ navigation }) => {
 
   const itemsCart = useSelector((state) => state.cartReducer.itemsCart)
   const total = useSelector((state) => state.cartReducer.totalPrice)
+  const user = useSelector((state)=> state.authReducer.user)
   const [triggerPost, result] = usePostOrderMutation()
+
 
   const isCartEmpty = itemsCart.length === 0;
 
-  const handleCheckout = () => {
-    if (!isCartEmpty) {
-      navigation.navigate('OrderScreen');
-    }
-  };
+ 
 
   useEffect(() => {
     dispatch(applyDiscount())
@@ -32,17 +30,32 @@ const Cart = ({ navigation }) => {
     dispatch(removeItemCart({ id }));
   };
 
+  
+  
+
+  // const handleCheckout = () => {
+  //   if (!isCartEmpty) {
+  //     navigation.navigate('OrderScreen');
+  //   }
+  // };
 
   const handleUpdate = async () => {
+    if (!user) {
+      navigation.navigate('Auth', {
+        screen: 'SignUp',
+        params: { redirectAfterLogin: 'Cart' }
+      });
+      return;
+    }
+  
     try {
       await triggerPost({ itemsCart, total, createdAt: Date.now() }).unwrap();
-      dispatch(clearCart());
       navigation.navigate('orden de compras');
     } catch (error) {
-      console.error("Error finalizing purchase:", error);
+      console.error("Error:", error);
     }
   };
-
+  
 
   const cartRender = ({ item }) => {
 
@@ -57,7 +70,7 @@ const Cart = ({ navigation }) => {
         </View>
         <Pressable
           style={styles.removeButton}
-          onPress={() => handleRemoveItem(item.id)} // Llama a la acción para eliminar
+          onPress={() => handleRemoveItem(item.id)} 
         >
           <Text style={styles.removeButtonText}>Eliminar</Text>
         </Pressable>

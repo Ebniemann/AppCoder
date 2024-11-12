@@ -1,42 +1,53 @@
-import { Image, View, StyleSheet } from "react-native";
+// Header.js
+import React from "react";
+import { View, Text, Pressable, StyleSheet } from "react-native";
+import Entypo from "@expo/vector-icons/Entypo";
+import Feather from "@expo/vector-icons/Feather";
 import { colors } from "../Global/colors";
-import DropdownComponent from "./dropdown";
 
-const Header = ({ title }) => {
-  const item = [
-    { label: "Escolar", value: "remera" },
-    { label: "Papelera", value: "papelera" },
-    { label: "Regalos", value: "regalo" },
-    { label: "Paper & Craft", value: "papercraft" },
-  ];
-
-  const renderIcon = (visible: boolean) => (
-    <View style={styles.icon}>
-      <Image style={styles.icon} source={require("../Icons/menu.png")} />
-    </View>
-  );
-
+const Header = ({ title, navigation }) => {
   return (
-    // <View style={styles.headerContainer}>
-    <DropdownComponent options={item} renderLeftIcon={renderIcon} />
-    // </View>
+    <View style={styles.container}>
+      {navigation.canGoBack() && (
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <Entypo name="chevron-left" size={24} color="black" />
+        </Pressable>
+      )}
+      <Text style={styles.title}>{title}</Text>
+      <Pressable
+        onPress={() => navigation.navigate("Tu Perfil")}
+        style={styles.profileButton}
+      >
+        <Feather name="user" size={35} color="black" />
+      </Pressable>
+    </View>
   );
 };
 
-export default Header;
-
 const styles = StyleSheet.create({
-  headerContainer: {
-    height: 50,
-    justifyContent: "center",
-    backgroundColor: colors.white,
-    marginBottom: 10,
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    backgroundColor: colors.lighblue,
+    paddingTop: 20,
+    marginBottom: 15,
   },
-
-  icon: {
-    width: 35,
-    height: 35,
-    paddingLeft: 15,
-    paddingRight: 15,
+  backButton: {
+    padding: 5,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  profileButton: {
+    padding: 5,
   },
 });
+
+export default Header;

@@ -13,7 +13,6 @@ const TabNavigator = () => {
    
       <Tab.Navigator screenOptions={{
         headerShown: false,
-        headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBar,
       }}>
