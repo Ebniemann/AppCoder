@@ -7,18 +7,22 @@ import { setProductId } from "../Features/shop/shopSlice";
 import { Loader } from '../Components/loader'
 import { addItemCart } from "../Features/cart/cartSlice";
 import { colors } from "../Global/colors";
+import { useEffect, useState } from "react";
 
 
 
 const { width } = Dimensions.get('window')
 
 const ListProducts = ({ navigation }) => {
+  const [inputText, setInputText]=useState('')
+  const [productFiltered, setProductFiltered]= useState([])
   const dispatch = useDispatch()
 
   const category = useSelector((state) => state.shopReducer.categorySelected)
 
   const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
   const { data: productsCategory, isLoading } = useGetProductsByCategoriesQuery(category)
+
 
   const ProductItem = ({ item }) => {
 
@@ -55,15 +59,25 @@ const ListProducts = ({ navigation }) => {
     )
   }
 
+  useEffect(() => {
+    const dataToFilter = category?  productsCategory : products
+    if(dataToFilter === ''){
+      setProductFiltered(dataToFilter || []);
+    }else{
+      const result = products?.filter(product => product.title?.toLowerCase().includes(inputText.toLowerCase()));
+      setProductFiltered(result);
+    }
+  }, [inputText, products, productsCategory, category]);
+
   return (
     isLoading ? (<ActivityIndicator size='small' />)
      :
       error ? (<Text>Error de carga</Text>)
         :
         <Layout>
-          <Input placeholder={'...'} />
+          <Input placeholder={'Buscar producto...'} value={inputText} onChangeText={text=>setInputText(text)}/>
           <FlatList
-            data={category ? productsCategory : products}
+            data={productFiltered}
             keyExtractor={(item) => item.id}
             renderItem={ProductItem}
             ListEmptyComponent={<Text>No hay productos disponibles.</Text>}
