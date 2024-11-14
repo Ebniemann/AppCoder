@@ -2,8 +2,9 @@ import { View, Text, Image, Pressable, FlatList, StyleSheet, Dimensions } from "
 import Layout from "../Components/layout";
 import { useGetProductsQuery } from "../Service/shopService";
 import { colors } from "../Global/colors";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { discount } from "../utils/functions";
+import { addItemCart } from "../Features/cart/cartSlice";
 
 
 const { width } = Dimensions.get('window')
@@ -11,17 +12,18 @@ const { width } = Dimensions.get('window')
 
 const PromotionDetail = () => {
 
+  const dispatch = useDispatch()
 
   const { data: products, error, isLoading } = useGetProductsQuery()
 
   const promotion = () => {
     return (
       products
-      .filter((item) => item.discount && item.discount > 0)
-      .map((item)=>({
-        ...item,
-        priceDicount : discount(item.price, item.discount)
-      }))
+        .filter((item) => item.discount && item.discount > 0)
+        .map((item) => ({
+          ...item,
+          priceDicount: discount(item.price, item.discount)
+        }))
 
     )
   }
@@ -42,6 +44,11 @@ const PromotionDetail = () => {
               <Text style={styles.discount}>{item.discount}% OFF</Text>
               <Text>Precio Final: {item.priceDicount}</Text>
             </View>
+            <Pressable onPress={() => dispatch(addItemCart(item))}>
+              <Text>
+                Añadir al carrito
+              </Text>
+            </Pressable>
           </View>
 
     )
