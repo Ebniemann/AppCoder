@@ -5,7 +5,7 @@ import { useSignUpMutation } from '../Service/authService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../Features/auth/authSlice';
 
-const SignUp = ({ navigation, route }) => {
+const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -14,27 +14,28 @@ const SignUp = ({ navigation, route }) => {
   
   const [triggerSignUp, result] = useSignUpMutation();
 
-  console.log('result trigger', result)
-
   const handleUpdate = async () => {
     if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden🚫");
+      alert('Las contraseñas no coinciden 🚫');
       return;
     }
-    if(result.status === 'rejected'){
-      alert('usuario existente')
-    }
+
     try {
-      const result= await triggerSignUp({ email, password }).unwrap();  
-      console.log ('result await', result)
-      dispatch(setUser(result.data.email, result.data.idToken));
-   
-      navigation.navigate('SignIn');
+      const resultTrigger = await triggerSignUp({ email, password }).unwrap();
+  
+      dispatch(
+        setUser({ email: resultTrigger.email, idToken: resultTrigger.idToken })
+      );
+
     } catch (error) {
-      console.error("Error al registrarse:", error);
+      console.error('Error al registrarse:', error);
+      if (error.data?.message) {
+        alert(error.data.message); 
+      } else {
+        alert('Hubo un problema con el registro 🚨');
+      }
     }
   };
-  
 
   return (
     <View style={styles.container}>

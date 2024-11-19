@@ -17,8 +17,7 @@ const SignIn = ({ navigation }) => {
   const userSession = useSelector((state) => state.authReducer.user);
 
   useEffect(() => {
-    if (userSession && userSession.email) {
-      console.log('Session actualizada', userSession);
+    if (userSession && userSession?.email) {
       navigation.navigate('Cart');
     }
   }, [userSession]); 
@@ -27,9 +26,10 @@ const SignIn = ({ navigation }) => {
     setLoading(true);
     try {
       const result = await triggerSignIn({ email, password }).unwrap();
-      console.log('resultado inicio sesion', result);
 
-      dispatch(setUser(result.data));
+      dispatch(
+        setUser({ email: result.email, idToken: result.idToken })
+      );
 
     } catch (error) {
       console.error("Error:", error);
