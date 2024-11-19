@@ -30,14 +30,7 @@ const Cart = ({ navigation }) => {
     dispatch(removeItemCart({ id }));
   };
 
-  
-  
 
-  // const handleCheckout = () => {
-  //   if (!isCartEmpty) {
-  //     navigation.navigate('OrderScreen');
-  //   }
-  // };
 
   const handleUpdate = async () => {
     if (!user) {

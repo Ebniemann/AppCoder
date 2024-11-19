@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 15,
     padding: 5,
-    flex: 1,  // Esto hace que el contenedor ocupe el espacio disponible
+    flex: 1,  
   },
   image: {
     width: '100%',

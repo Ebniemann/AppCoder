@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: '#e0e0e0', // Color de fondo para el contenedor de la imagen
+    backgroundColor: '#e0e0e0',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 20,

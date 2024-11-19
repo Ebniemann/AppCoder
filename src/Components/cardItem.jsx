@@ -2,7 +2,6 @@ import { Pressable, Image, Text, StyleSheet } from "react-native";
 import { colors } from "../Global/colors";
 
 const CardItem = ({ titleCard, icon, onPress }) => {
-  console.log("Title Card Value:", titleCard);
   return (
     <Pressable style={styles.container} onPress={onPress}>
       {icon && <Image source={icon} style={styles.image} resizeMode="contain" />}

@@ -19,9 +19,6 @@ const ShoppingList = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedprod, setSelectedProd] = useState({});
 
-  console.log("list", list);
-  console.log("setinput", setProdInput);
-  console.log('prodInput:', prodInput)
 
   const listProduct = () => {
     setList((prevList) => [
@@ -38,7 +35,6 @@ const ShoppingList = () => {
 
   const handleSelectedProd = (item) => {
     setSelectedProd(item);
-    console.log("item", item);
     setModalVisible(true);
   };
 

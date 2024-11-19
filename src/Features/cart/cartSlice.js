@@ -43,22 +43,18 @@ export const cartSlice = createSlice({
     },
 
     applyDiscount: (state) => {
-      // Si no hay items o no hay descuento, no hacer nada
       if (state.itemsCart.length === 0 || !state.discount) return;
 
       let totalModified = false;
 
-      // Actualizar los items con descuento
       state.itemsCart = state.itemsCart.map((item) => {
-        // Si no existe priceDiscount, lo inicializamos en 0
         const priceDiscount = item.priceDiscount || 0;
 
-        // Solo aplicamos descuento si hay uno y el precio cambia
         let newPriceDiscount = priceDiscount;
 
         if (item.discount > 0) {
           newPriceDiscount = discount(item.price, item.discount);
-          // Si el descuento cambió el precio, marcamos que se modificó
+
           if (newPriceDiscount !== priceDiscount) {
             totalModified = true;
           }
