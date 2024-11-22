@@ -21,7 +21,7 @@ const ListProducts = ({ navigation }) => {
   const category = useSelector((state) => state.shopReducer.categorySelected)
 
   const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
-  const { data: productsCategory, isLoading } = useGetProductsByCategoriesQuery(category)
+  const { data: productsCategory, isLoading } = useGetProductsByCategoriesQuery(category || null)
 
 
   const ProductItem = ({ item }) => {
@@ -61,11 +61,11 @@ const ListProducts = ({ navigation }) => {
 
   useEffect(() => {
     const dataToFilter = category?  productsCategory : products
-    if(dataToFilter === ''){
-      setProductFiltered(dataToFilter || []);
-    }else{
-      const result = products?.filter(product => product.title?.toLowerCase().includes(inputText.toLowerCase()));
+    if(dataToFilter ?.lenght){
+      const result = dataToFilter(prod=> prod.title?.toLowerCase().includes(inputText.toLowerCase()));
       setProductFiltered(result);
+    }else{
+      setProductFiltered([]);
     }
   }, [inputText, products, productsCategory, category]);
 

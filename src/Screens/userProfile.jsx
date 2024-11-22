@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as ImagePicker from 'expo-image-picker'
 import { setProfilePicture } from '../Features/auth/authSlice';
 import { colors } from '../Global/colors';
+import { usePutProfilePictureMutation } from '../Service/userService';
 
 const UserProfile = () => { 
 
@@ -13,10 +14,8 @@ const UserProfile = () => {
 
   const image = useSelector((state)=> state.authReducer.setProfilePicture)
   const user = useSelector((state)=> state.authReducer.user.email)
-      console.log('user', user)
-
   const localId = useSelector((state)=> state.authReducer.localId)
-
+  const [triggerPicture, result]= usePutProfilePictureMutation()
   const verifyCameraPermissions= async ()=>{
     const {granted }= await ImagePicker.requestCameraPermissionsAsync()
     if(!granted) return false
@@ -38,6 +37,7 @@ const UserProfile = () => {
          )
          if(!result.canceled){
           dispatch(setProfilePicture(`data:image/jpeg;base64,${result.assets[0].base64}`))
+          triggerPicture({image:`data:image/jpeg;base64,${result.assets[0].base64}`, localId})
          }
       }else{
 
