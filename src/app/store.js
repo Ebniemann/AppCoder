@@ -7,6 +7,7 @@ import { orderApi } from "../Service/orderService";
 import { authApi } from "../Service/authService";
 import authReducer from "../Features/auth/authSlice";
 import { userApi } from "../Service/userService";
+import favoritesReducer from "../Features/functionalities/favoritesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     authReducer,
     [userApi.reducerPath]: userApi.reducer,
+    favoritesReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

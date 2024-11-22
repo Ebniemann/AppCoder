@@ -8,14 +8,15 @@ import { Loader } from '../Components/loader'
 import { addItemCart } from "../Features/cart/cartSlice";
 import { colors } from "../Global/colors";
 import { useEffect, useState } from "react";
+import { addFavorite } from '../Features/functionalities/favoritesSlice'
 
 
 
 const { width } = Dimensions.get('window')
 
 const ListProducts = ({ navigation }) => {
-  const [inputText, setInputText]=useState('')
-  const [productFiltered, setProductFiltered]= useState([])
+  const [inputText, setInputText] = useState('')
+  const [productFiltered, setProductFiltered] = useState([])
   const dispatch = useDispatch()
 
   const category = useSelector((state) => state.shopReducer.categorySelected)
@@ -23,6 +24,9 @@ const ListProducts = ({ navigation }) => {
   const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
   const { data: productsCategory, isLoading } = useGetProductsByCategoriesQuery(category || null)
 
+  const isFavorite = useSelector((state) =>
+    state.favoritesReducer.favoriteItems.some((product) => product.id === item.id)
+  );
 
   const ProductItem = ({ item }) => {
 
@@ -39,16 +43,24 @@ const ListProducts = ({ navigation }) => {
                 <Text style={styles.text}>{item.shortDescription}</Text>
                 <Text style={styles.price}>${item.price}</Text>
                 {
-                  item.discount & item.discount > 0 ? 
-                  <Text style={styles.discount}>{item.discount}% OFF</Text> :
-                  null
+                  item.discount & item.discount > 0 ?
+                    <Text style={styles.discount}>{item.discount}% OFF</Text> :
+                    null
                 }
-                
-                <Pressable onPress={()=> dispatch(addItemCart(item))}>
+                <Pressable onPress={() => dispatch(addFavorite(item))}>
+                  <Image
+                    source={require("../Icons/favorito.png")}
+                    style={[
+                      styles.favoriteIcon,
+                      isFavorite ? { tintColor: "red" } : { tintColor: "gray" },
+                    ]}
+                  />
+                </Pressable>
+                <Pressable onPress={() => dispatch(addItemCart(item))}>
                   <Text>
-                  Añadir al carrito
+                    Añadir al carrito
                   </Text>
-                  </Pressable>
+                </Pressable>
               </View>
             </Pressable>
           )
@@ -60,22 +72,22 @@ const ListProducts = ({ navigation }) => {
   }
 
   useEffect(() => {
-    const dataToFilter = category?  productsCategory : products
-    if(dataToFilter ?.lenght){
-      const result = dataToFilter(prod=> prod.title?.toLowerCase().includes(inputText.toLowerCase()));
+    const dataToFilter = category ? productsCategory : products
+    if (dataToFilter?.lenght) {
+      const result = dataToFilter(prod => prod.title?.toLowerCase().includes(inputText.toLowerCase()));
       setProductFiltered(result);
-    }else{
+    } else {
       setProductFiltered([]);
     }
   }, [inputText, products, productsCategory, category]);
 
   return (
     isLoading ? (<ActivityIndicator size='small' />)
-     :
+      :
       error ? (<Text>Error de carga</Text>)
         :
         <Layout>
-          <Input placeholder={'Buscar producto...'} value={inputText} onChangeText={text=>setInputText(text)}/>
+          <Input placeholder={'Buscar producto...'} value={inputText} onChangeText={text => setInputText(text)} />
           <FlatList
             data={productFiltered}
             keyExtractor={(item) => item.id}
@@ -121,5 +133,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: colors.purple
+  },
+  favoriteIcon: {
+    width: 25,
+    height: 25,
+    marginTop: 10,
   }
 })

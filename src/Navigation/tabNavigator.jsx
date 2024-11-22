@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { Image } from 'react-native';
 import CartNavigator from './cartNavigator'
 import ShopNavigator from './shopNavigator';
+import FavoritesScreen from '../Screens/favorites';
 
 
 const Tab = createBottomTabNavigator();
@@ -28,6 +28,13 @@ const TabNavigator = () => {
           component={CartNavigator}
           options={{
             tabBarIcon: () => (<Image style={{ width: 30, height: 30 }} source={require('../Icons/cart.png')} />),
+            headerShown: false
+          }} />
+           <Tab.Screen
+          name='Favorites'
+          component={FavoritesScreen}
+          options={{
+            tabBarIcon: () => (<Image style={{ width: 30, height: 30 }} source={require('../Icons/favorito.png')} />),
             headerShown: false
           }} />
       </Tab.Navigator>
