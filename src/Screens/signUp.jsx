@@ -23,10 +23,11 @@ const SignUp = ({ navigation }) => {
     try {
       const resultTrigger = await triggerSignUp({ email, password }).unwrap();
   
+      console.log('resultado', resultTrigger)
       dispatch(
-        setUser({ email: resultTrigger.email, idToken: resultTrigger.idToken })
+        setUser({ email: resultTrigger.email, idToken: resultTrigger.idToken,  localId: resultTrigger.localId, })
       );
-
+      navigation.navigate('SignIn', { fromSignUp: true });
     } catch (error) {
       console.error('Error al registrarse:', error);
       if (error.data?.message) {

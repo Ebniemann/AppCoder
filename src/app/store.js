@@ -6,6 +6,7 @@ import { locationApi } from "../Service/locationService";
 import { orderApi } from "../Service/orderService";
 import { authApi } from "../Service/authService";
 import authReducer from "../Features/auth/authSlice";
+import { userApi } from "../Service/userService";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     [orderApi.reducerPath]: orderApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     authReducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -23,5 +25,6 @@ export const store = configureStore({
       .concat(shopApi.middleware)
       .concat(locationApi.middleware)
       .concat(orderApi.middleware)
-      .concat(authApi.middleware),
+      .concat(authApi.middleware)
+      .concat(userApi.middleware),
 });

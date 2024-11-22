@@ -16,11 +16,13 @@ const SignIn = ({ navigation }) => {
 
   const userSession = useSelector((state) => state.authReducer.user);
 
+  const { fromSignUp } = route.params || {}; 
+
   useEffect(() => {
-    if (userSession && userSession?.email) {
+    if (userSession && userSession?.email && !fromSignUp) {
       navigation.navigate('Cart');
     }
-  }, [userSession]); 
+  }, [userSession, fromSignUp, navigation]);
 
   const handleSignIn = async () => {
     setLoading(true);
