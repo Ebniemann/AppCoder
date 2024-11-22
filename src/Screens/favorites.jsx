@@ -21,7 +21,7 @@ const FavoritesScreen = ({ navigation }) => {
     <View style={styles.container}>
       <FlatList
         data={favoriteItems}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={renderFavoriteItem}
         ListEmptyComponent={<Text>No tienes productos favoritos 😿</Text>}
       />

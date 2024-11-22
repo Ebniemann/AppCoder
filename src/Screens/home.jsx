@@ -69,7 +69,8 @@ const Home = ({ navigation }) => {
             {
               categories.map((item) =>
               (
-                <Pressable key={item.id} style={styles.banners} onPress={() => { dispatch(setCategory(item.name)); navigation.navigate('Productos') }}>
+                <Pressable key={item.id} style={styles.banners} onPress={() => { dispatch(setCategory(item.name));   navigation.navigate('Productos') }}>
+                  
                   <Image source={{ uri: item.image }} style={styles.bannerImage} />
                 </Pressable>)
               )

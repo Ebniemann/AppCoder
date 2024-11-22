@@ -16,26 +16,22 @@ const { width } = Dimensions.get('window')
 
 const ListProducts = ({ navigation }) => {
   const [inputText, setInputText] = useState('')
-  const [productFiltered, setProductFiltered] = useState([])
+  // const [productFiltered, setProductFiltered] = useState([])
   const dispatch = useDispatch()
-
   const category = useSelector((state) => state.shopReducer.categorySelected)
+  const { data: productsCategory, isLoading, error } = useGetProductsByCategoriesQuery(category || null)
 
-  const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
-  const { data: productsCategory, isLoading } = useGetProductsByCategoriesQuery(category || null)
+  // const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
 
-  const isFavorite = useSelector((state) =>
-    state.favoritesReducer.favoriteItems.some((product) => product.id === item.id)
-  );
+  const filteredProducts = productsCategory?.filter((prod) =>
+    prod.title?.toLowerCase().includes(inputText.toLowerCase())
+  ) || [];
+
 
   const ProductItem = ({ item }) => {
-
+    console.log(item);
     return (
       <View>
-        {
-          productsLoading ? (
-            <Loader />
-          ) : (
             <Pressable style={styles.productContainer} onPress={() => { dispatch(setProductId(item.id)), navigation.navigate('Detalle del Producto') }} >
               <View style={styles.newProduct}>
                 <Image source={{ uri: item.image }} style={styles.image} />
@@ -47,39 +43,31 @@ const ListProducts = ({ navigation }) => {
                     <Text style={styles.discount}>{item.discount}% OFF</Text> :
                     null
                 }
-                <Pressable onPress={() => dispatch(addFavorite(item))}>
-                  <Image
-                    source={require("../Icons/favorito.png")}
-                    style={[
-                      styles.favoriteIcon,
-                      isFavorite ? { tintColor: "red" } : { tintColor: "gray" },
-                    ]}
-                  />
+                <Pressable onPress={() => dispatch(addFavorite(item))} style={styles.favoriteIconContainer}>
+                  <Image style={styles.favoriteIcon} source={require("../Icons/favorito.png")}/>
                 </Pressable>
-                <Pressable onPress={() => dispatch(addItemCart(item))}>
-                  <Text>
+                <Pressable onPress={() => dispatch(addItemCart(item.id))}>
+                  <Text style={styles.textCart}>
                     Añadir al carrito
                   </Text>
                 </Pressable>
               </View>
             </Pressable>
-          )
-        }
       </View>
 
 
     )
   }
 
-  useEffect(() => {
-    const dataToFilter = category ? productsCategory : products
-    if (dataToFilter?.lenght) {
-      const result = dataToFilter(prod => prod.title?.toLowerCase().includes(inputText.toLowerCase()));
-      setProductFiltered(result);
-    } else {
-      setProductFiltered([]);
-    }
-  }, [inputText, products, productsCategory, category]);
+  // useEffect(() => {
+  //   const dataToFilter = category ? productsCategory : products
+  //   if (dataToFilter?.length) {
+  //     const result = dataToFilter.filter(prod => prod.title?.toLowerCase().includes(inputText.toLowerCase()));
+  //     setProductFiltered(result);
+  //   } else {
+  //     setProductFiltered([]);
+  //   }
+  // }, [inputText, products, productsCategory, category]);
 
   return (
     isLoading ? (<ActivityIndicator size='small' />)
@@ -89,7 +77,7 @@ const ListProducts = ({ navigation }) => {
         <Layout>
           <Input placeholder={'Buscar producto...'} value={inputText} onChangeText={text => setInputText(text)} />
           <FlatList
-            data={productFiltered}
+            data={filteredProducts}
             keyExtractor={(item) => item.id}
             renderItem={ProductItem}
             ListEmptyComponent={<Text>No hay productos disponibles.</Text>}
@@ -134,9 +122,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.purple
   },
+  textCart:{
+    fontSize:15,
+    fontWeight:'bold',
+    textDecorationLine: 'underline'
+  },
+  favoriteIconContainer:{
+    position:'absolute',
+    top:-18,
+    right:-18
+  },
   favoriteIcon: {
-    width: 25,
-    height: 25,
-    marginTop: 10,
+    width: 50,
+    height: 50,    
   }
 })
