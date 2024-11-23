@@ -7,7 +7,7 @@ const FavoritesScreen = ({ navigation }) => {
   const renderFavoriteItem = ({ item }) => (
     <Pressable
       style={styles.favoriteItem}
-      onPress={() => navigation.navigate("Detalle del Producto", { product: item })}
+      onPress={() =>{  console.log("Navegando a DetailProduct"); navigation.navigate("Detalle")}}
     >
       <Image source={{ uri: item.image }} style={styles.image} />
       <View style={styles.textContainer}>
@@ -21,7 +21,7 @@ const FavoritesScreen = ({ navigation }) => {
     <View style={styles.container}>
       <FlatList
         data={favoriteItems}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         renderItem={renderFavoriteItem}
         ListEmptyComponent={<Text>No tienes productos favoritos 😿</Text>}
       />

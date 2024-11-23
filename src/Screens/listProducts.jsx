@@ -18,14 +18,16 @@ const ListProducts = ({ navigation }) => {
   const [inputText, setInputText] = useState('')
   // const [productFiltered, setProductFiltered] = useState([])
   const dispatch = useDispatch()
+  
+  
   const category = useSelector((state) => state.shopReducer.categorySelected)
-  const { data: productsCategory, isLoading, error } = useGetProductsByCategoriesQuery(category || null)
+  const { data: productsCategory, isLoading, error } = useGetProductsByCategoriesQuery(category)
 
   // const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
 
-  const filteredProducts = productsCategory?.filter((prod) =>
-    prod.title?.toLowerCase().includes(inputText.toLowerCase())
-  ) || [];
+  // const filteredProducts = productsCategory?.filter((prod) =>
+  //   prod.title?.toLowerCase().includes(inputText.toLowerCase())
+  // ) || [];
 
 
   const ProductItem = ({ item }) => {
@@ -46,7 +48,7 @@ const ListProducts = ({ navigation }) => {
                 <Pressable onPress={() => dispatch(addFavorite(item))} style={styles.favoriteIconContainer}>
                   <Image style={styles.favoriteIcon} source={require("../Icons/favorito.png")}/>
                 </Pressable>
-                <Pressable onPress={() => dispatch(addItemCart(item.id))}>
+                <Pressable onPress={() => dispatch(addItemCart(item))}>
                   <Text style={styles.textCart}>
                     Añadir al carrito
                   </Text>
@@ -77,7 +79,7 @@ const ListProducts = ({ navigation }) => {
         <Layout>
           <Input placeholder={'Buscar producto...'} value={inputText} onChangeText={text => setInputText(text)} />
           <FlatList
-            data={filteredProducts}
+            data={productsCategory}
             keyExtractor={(item) => item.id}
             renderItem={ProductItem}
             ListEmptyComponent={<Text>No hay productos disponibles.</Text>}

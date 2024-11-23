@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 import { Image } from 'react-native';
 import CartNavigator from './cartNavigator'
 import ShopNavigator from './shopNavigator';
-import FavoritesScreen from '../Screens/favorites';
+import favoritesNavigator from './favoritesNavigator';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -32,7 +33,7 @@ const TabNavigator = () => {
           }} />
            <Tab.Screen
           name='Favorites'
-          component={FavoritesScreen}
+          component={favoritesNavigator}
           options={{
             tabBarIcon: () => (<Image style={{ width: 30, height: 30 }} source={require('../Icons/favorito.png')} />),
             headerShown: false

@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
-import ShopHomeNavigator from './shopHome';
+import ShopHomeNavigator from './detailProduct';
 import CartNavigator from './cartNavigator';
 import DetailProduct from '../Screens/detailProduct';
 
