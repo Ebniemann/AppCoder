@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import { clearCart } from "../Features/cart/cartSlice";
 
 const Order = () => {
   const itemsCart = useSelector((state) => state.cartReducer.itemsCart);
   const total = useSelector((state) => state.cartReducer.totalPrice);
   const [orderNumber, setOrderNumber] = useState(null);
+
+  const dispatch = useDispatch(); 
 
   const navigation = useNavigation();
 
@@ -27,6 +30,10 @@ const Order = () => {
       </View>
     );
   };
+  const handleBackToHome = () => {
+    dispatch(clearCart()); // Limpia el carrito
+    navigation.navigate("Home"); // Navega al inicio
+  };
 
   return (
     <View style={styles.container}>
@@ -46,7 +53,7 @@ const Order = () => {
 
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate("Home")}
+        onPress={handleBackToHome}
       >
         <Text style={styles.buttonText}>Volver al Inicio</Text>
       </Pressable>

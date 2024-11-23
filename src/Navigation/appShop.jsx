@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setProfilePicture } from "../Features/auth/authSlice";
 import { useGetProfilePictureQuery } from "../Service/userService";
+import ProfileNavigator from "./userProfileNavigation";
 
 
 const Stack = createNativeStackNavigator()
@@ -35,7 +36,7 @@ const AppShop = () => {
       <Stack.Screen name="Promociones" component={PromotionList} />
       <Stack.Screen name="DetailProductTabs" component={TabProductDetailNavigator} />
       <Stack.Screen name="Auth" component={AuthNavigator} />
-      <Stack.Screen name="Tu Perfil" component={UserProfile}/>
+      <Stack.Screen name="Tu Perfil" component={ProfileNavigator}/>
 
     </Stack.Navigator>
 

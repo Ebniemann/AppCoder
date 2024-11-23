@@ -5,7 +5,7 @@ import { useSignInMutation } from '../Service/authService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../Features/auth/authSlice'; 
 
-const SignIn = ({ navigation }) => {
+const SignIn = ({ navigation, route }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);

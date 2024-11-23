@@ -13,7 +13,7 @@ const UserProfile = () => {
   const dispatch=useDispatch()
 
   const image = useSelector((state)=> state.authReducer.setProfilePicture)
-  const user = useSelector((state)=> state.authReducer.user.email)
+  const user = useSelector((state)=> state.authReducer.user)
   const localId = useSelector((state)=> state.authReducer.localId)
   const [triggerPicture, result]= usePutProfilePictureMutation()
   const verifyCameraPermissions= async ()=>{
@@ -43,6 +43,15 @@ const UserProfile = () => {
 
       }
   }
+
+  if (!user|| !localId) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Aun no has iniciado Sesión...</Text>
+      </View>
+    );
+  }
+
  
   return (
     <View style={styles.container}>
@@ -53,7 +62,7 @@ const UserProfile = () => {
           <Image source={{ uri: image }} style={styles.profileImage} resizeMode="cover" />
         ) : (
           <Text style={styles.initials}>
-            {user.charAt(0).toUpperCase()}
+            {user ? user.charAt(0).toUpperCase() : "?"}
           </Text>
         )}
         <Pressable onPress={pickImage} style={styles.cameraIcon}>
