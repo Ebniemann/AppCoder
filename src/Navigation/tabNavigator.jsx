@@ -21,21 +21,21 @@ const TabNavigator = () => {
           name='Shop'
           component={ShopNavigator}
           options={{
-            tabBarIcon: () => (<Image style={{ width: 30, height: 30 }} source={require('../Icons/list.png')} />),
+            tabBarIcon: () => (<Image style={{ width: 40, height: 40 }} source={require('../Icons/list.png')} />),
             headerShown: false
           }} />
         <Tab.Screen
           name='Cart'
           component={CartNavigator}
           options={{
-            tabBarIcon: () => (<Image style={{ width: 30, height: 30 }} source={require('../Icons/cart.png')} />),
+            tabBarIcon: () => (<Image style={{ width: 40, height: 40 }} source={require('../Icons/cart.png')} />),
             headerShown: false
           }} />
            <Tab.Screen
           name='Favorites'
           component={favoritesNavigator}
           options={{
-            tabBarIcon: () => (<Image style={{ width: 30, height: 30 }} source={require('../Icons/favorito.png')} />),
+            tabBarIcon: () => (<Image style={{ width: 50, height: 50 }} source={require('../Icons/favorito.png')} />),
             headerShown: false
           }} />
       </Tab.Navigator>
