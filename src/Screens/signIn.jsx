@@ -4,11 +4,13 @@ import { colors } from '../Global/colors';
 import { useSignInMutation } from '../Service/authService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../Features/auth/authSlice'; 
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const SignIn = ({ navigation, route }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   const [triggerSignIn] = useSignInMutation();
   const dispatch = useDispatch();
@@ -40,6 +42,8 @@ const SignIn = ({ navigation, route }) => {
     }
   };
 
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Iniciar Sesión</Text>
@@ -67,6 +71,19 @@ const SignIn = ({ navigation, route }) => {
       <Pressable onPress={() => navigation.navigate('SignUp')}>
         <Text style={styles.linkText}>Registrate</Text>
       </Pressable>
+
+      <View style={styles.switchContainer}>
+        <Text style={styles.switchLabel}>Mantener sesion</Text>
+        <Pressable onPress={toggleSwitch} style={styles.switchPressable}>
+          <Icon name={isEnabled ? "check-circle" : "cancel"} size={30} color={isEnabled ? colors.green : colors.red} />
+          <Switch
+            value={isEnabled}
+            onValueChange={toggleSwitch}
+            trackColor={{ false: colors.gray, true: colors.green }}
+            thumbColor={isEnabled ? colors.white : colors.gray}
+          />
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -112,5 +129,19 @@ const styles = StyleSheet.create({
     color: colors.purple,
     textDecorationLine: 'underline',
     marginTop: 10,
+  },
+  switchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  switchLabel: {
+    fontSize: 16,
+    color: colors.black,
+    marginRight: 10,
+  },
+  switchPressable: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
