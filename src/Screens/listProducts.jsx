@@ -16,18 +16,11 @@ const { width } = Dimensions.get('window')
 
 const ListProducts = ({ navigation }) => {
   const [inputText, setInputText] = useState('')
-  // const [productFiltered, setProductFiltered] = useState([])
   const dispatch = useDispatch()
   
   
   const category = useSelector((state) => state.shopReducer.categorySelected)
   const { data: productsCategory, isLoading, error } = useGetProductsByCategoriesQuery(category)
-
-  // const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
-
-  // const filteredProducts = productsCategory?.filter((prod) =>
-  //   prod.title?.toLowerCase().includes(inputText.toLowerCase())
-  // ) || [];
 
 
   const ProductItem = ({ item }) => {
@@ -61,15 +54,6 @@ const ListProducts = ({ navigation }) => {
     )
   }
 
-  // useEffect(() => {
-  //   const dataToFilter = category ? productsCategory : products
-  //   if (dataToFilter?.length) {
-  //     const result = dataToFilter.filter(prod => prod.title?.toLowerCase().includes(inputText.toLowerCase()));
-  //     setProductFiltered(result);
-  //   } else {
-  //     setProductFiltered([]);
-  //   }
-  // }, [inputText, products, productsCategory, category]);
 
   return (
     isLoading ? (<ActivityIndicator size='small' />)

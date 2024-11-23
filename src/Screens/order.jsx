@@ -31,8 +31,8 @@ const Order = () => {
     );
   };
   const handleBackToHome = () => {
-    dispatch(clearCart()); // Limpia el carrito
-    navigation.navigate("Home"); // Navega al inicio
+    dispatch(clearCart()); 
+    navigation.navigate("Home"); 
   };
 
   return (
