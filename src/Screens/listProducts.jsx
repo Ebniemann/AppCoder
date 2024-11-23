@@ -8,30 +8,25 @@ import { Loader } from '../Components/loader'
 import { addItemCart } from "../Features/cart/cartSlice";
 import { colors } from "../Global/colors";
 import { useEffect, useState } from "react";
+import { addFavorite } from '../Features/functionalities/favoritesSlice'
 
 
 
 const { width } = Dimensions.get('window')
 
 const ListProducts = ({ navigation }) => {
-  const [inputText, setInputText]=useState('')
-  const [productFiltered, setProductFiltered]= useState([])
+  const [inputText, setInputText] = useState('')
   const dispatch = useDispatch()
-
+  
+  
   const category = useSelector((state) => state.shopReducer.categorySelected)
-
-  const { data: products, error, isLoading: productsLoading } = useGetProductsQuery()
-  const { data: productsCategory, isLoading } = useGetProductsByCategoriesQuery(category)
+  const { data: productsCategory, isLoading, error } = useGetProductsByCategoriesQuery(category)
 
 
   const ProductItem = ({ item }) => {
-
+    console.log(item);
     return (
       <View>
-        {
-          productsLoading ? (
-            <Loader />
-          ) : (
             <Pressable style={styles.productContainer} onPress={() => { dispatch(setProductId(item.id)), navigation.navigate('Detalle del Producto') }} >
               <View style={styles.newProduct}>
                 <Image source={{ uri: item.image }} style={styles.image} />
@@ -39,45 +34,36 @@ const ListProducts = ({ navigation }) => {
                 <Text style={styles.text}>{item.shortDescription}</Text>
                 <Text style={styles.price}>${item.price}</Text>
                 {
-                  item.discount & item.discount > 0 ? 
-                  <Text style={styles.discount}>{item.discount}% OFF</Text> :
-                  null
+                  item.discount & item.discount > 0 ?
+                    <Text style={styles.discount}>{item.discount}% OFF</Text> :
+                    null
                 }
-                
-                <Pressable onPress={()=> dispatch(addItemCart(item))}>
-                  <Text>
-                  Añadir al carrito
+                <Pressable onPress={() => dispatch(addFavorite(item))} style={styles.favoriteIconContainer}>
+                  <Image style={styles.favoriteIcon} source={require("../Icons/favorito.png")}/>
+                </Pressable>
+                <Pressable onPress={() => dispatch(addItemCart(item))}>
+                  <Text style={styles.textCart}>
+                    Añadir al carrito
                   </Text>
-                  </Pressable>
+                </Pressable>
               </View>
             </Pressable>
-          )
-        }
       </View>
 
 
     )
   }
 
-  useEffect(() => {
-    const dataToFilter = category?  productsCategory : products
-    if(dataToFilter === ''){
-      setProductFiltered(dataToFilter || []);
-    }else{
-      const result = products?.filter(product => product.title?.toLowerCase().includes(inputText.toLowerCase()));
-      setProductFiltered(result);
-    }
-  }, [inputText, products, productsCategory, category]);
 
   return (
     isLoading ? (<ActivityIndicator size='small' />)
-     :
+      :
       error ? (<Text>Error de carga</Text>)
         :
         <Layout>
-          <Input placeholder={'Buscar producto...'} value={inputText} onChangeText={text=>setInputText(text)}/>
+          <Input placeholder={'Buscar producto...'} value={inputText} onChangeText={text => setInputText(text)} />
           <FlatList
-            data={productFiltered}
+            data={productsCategory}
             keyExtractor={(item) => item.id}
             renderItem={ProductItem}
             ListEmptyComponent={<Text>No hay productos disponibles.</Text>}
@@ -121,5 +107,19 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: colors.purple
+  },
+  textCart:{
+    fontSize:15,
+    fontWeight:'bold',
+    textDecorationLine: 'underline'
+  },
+  favoriteIconContainer:{
+    position:'absolute',
+    top:-18,
+    right:-18
+  },
+  favoriteIcon: {
+    width: 50,
+    height: 50,    
   }
 })

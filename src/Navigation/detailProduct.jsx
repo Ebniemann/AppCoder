@@ -1,18 +1,16 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ListProducts from '../Screens/listProducts'
+
 import  DetailProduct  from "../Screens/detailProduct";
 
 
 const Stack = createNativeStackNavigator()
 
-const ShopNavigator = ()=>{
+const ShopHome = ()=>{
   return(
     <Stack.Navigator screenOptions={{headerShown: false}}>
-
-      <Stack.Screen name="Productos" component={ListProducts}/> 
-      <Stack.Screen name="Detalle del Producto" component={DetailProduct}/>
+      <Stack.Screen name="DetailProduct" component={DetailProduct}/>
     </Stack.Navigator>
   )
 }
 
-export default ShopNavigator
+export default ShopHome

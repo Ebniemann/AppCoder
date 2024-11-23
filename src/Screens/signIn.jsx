@@ -5,7 +5,7 @@ import { useSignInMutation } from '../Service/authService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../Features/auth/authSlice'; 
 
-const SignIn = ({ navigation }) => {
+const SignIn = ({ navigation, route }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -16,11 +16,13 @@ const SignIn = ({ navigation }) => {
 
   const userSession = useSelector((state) => state.authReducer.user);
 
+  const { fromSignUp } = route.params || {}; 
+
   useEffect(() => {
-    if (userSession && userSession?.email) {
+    if (userSession && userSession?.email && !fromSignUp) {
       navigation.navigate('Cart');
     }
-  }, [userSession]); 
+  }, [userSession, fromSignUp, navigation]);
 
   const handleSignIn = async () => {
     setLoading(true);

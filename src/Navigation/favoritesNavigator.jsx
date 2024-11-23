@@ -1,18 +1,21 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ListProducts from '../Screens/listProducts'
 import  DetailProduct  from "../Screens/detailProduct";
+import FavoritesScreen from '../Screens/favorites';
+
 
 
 const Stack = createNativeStackNavigator()
 
-const ShopNavigator = ()=>{
+const FavoritesNavigator = ()=>{
   return(
     <Stack.Navigator screenOptions={{headerShown: false}}>
-
-      <Stack.Screen name="Productos" component={ListProducts}/> 
-      <Stack.Screen name="Detalle del Producto" component={DetailProduct}/>
+      <Stack.Screen
+          name='Favorites'
+          component={FavoritesScreen}
+       />
+      <Stack.Screen name="Detalle" component={DetailProduct}/>
     </Stack.Navigator>
   )
 }
 
-export default ShopNavigator
+export default FavoritesNavigator

@@ -4,11 +4,26 @@ import TabNavigator from "./tabNavigator";
 import TabProductDetailNavigator from "./tabShopHome";
 import AuthNavigator from "./authNavigator";
 import Header from "../Components/header";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { setProfilePicture } from "../Features/auth/authSlice";
+import { useGetProfilePictureQuery } from "../Service/userService";
+import ProfileNavigator from "./userProfileNavigation";
 
 
 const Stack = createNativeStackNavigator()
 
 const AppShop = () => {
+  const dispatch = useDispatch();
+  const localId = useSelector((state) => state.authReducer.localId);
+
+  const { data: profilePicture } = useGetProfilePictureQuery(localId);
+
+  useEffect(() => {
+    if (profilePicture?.image) {
+      dispatch(setProfilePicture(profilePicture.image));
+    }
+  }, [profilePicture, dispatch]);
   return (
 
     <Stack.Navigator initialRouteName="Home" screenOptions={({ navigation, route }) => ({
@@ -21,7 +36,7 @@ const AppShop = () => {
       <Stack.Screen name="Promociones" component={PromotionList} />
       <Stack.Screen name="DetailProductTabs" component={TabProductDetailNavigator} />
       <Stack.Screen name="Auth" component={AuthNavigator} />
-      <Stack.Screen name="Tu Perfil" component={UserProfile}/>
+      <Stack.Screen name="Tu Perfil" component={ProfileNavigator}/>
 
     </Stack.Navigator>
 

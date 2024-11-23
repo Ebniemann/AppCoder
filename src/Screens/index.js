@@ -9,3 +9,4 @@ export { default as Order } from "./order.jsx";
 export { default as SignIn } from "./signIn.jsx";
 export { default as SignUp } from "./signUp.jsx";
 export { default as UserProfile } from "./userProfile.jsx";
+export { default as Favorites } from "./favorites.jsx";
