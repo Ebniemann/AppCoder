@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home, ShoppingList, Location, PromotionList, UserProfile } from '../Screens'
+import { Home, ShoppingList, Location, PromotionList, UserProfile } from '../Screens';
 import TabNavigator from "./tabNavigator";
 import TabProductDetailNavigator from "./tabShopHome";
 import AuthNavigator from "./authNavigator";
@@ -10,13 +10,11 @@ import { setProfilePicture } from "../Features/auth/authSlice";
 import { useGetProfilePictureQuery } from "../Service/userService";
 import ProfileNavigator from "./userProfileNavigation";
 
-
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 const AppShop = () => {
   const dispatch = useDispatch();
   const localId = useSelector((state) => state.authReducer.localId);
-
   const { data: profilePicture } = useGetProfilePictureQuery(localId);
 
   useEffect(() => {
@@ -24,24 +22,21 @@ const AppShop = () => {
       dispatch(setProfilePicture(profilePicture.image));
     }
   }, [profilePicture, dispatch]);
-  return (
 
+  return (
     <Stack.Navigator initialRouteName="Home" screenOptions={({ navigation, route }) => ({
       header: () => <Header title={route.name} navigation={navigation} />,
     })}>
-      <Stack.Screen name='Home' component={Home}/>
+      <Stack.Screen name='Home' component={Home} />
       <Stack.Screen name="Sucursales" component={Location} />
       <Stack.Screen name="Lista de Compras" component={ShoppingList} />
-      <Stack.Screen name="Productos" component={TabNavigator}  />
+      <Stack.Screen name="Productos" component={TabNavigator} />
       <Stack.Screen name="Promociones" component={PromotionList} />
       <Stack.Screen name="DetailProductTabs" component={TabProductDetailNavigator} />
       <Stack.Screen name="Auth" component={AuthNavigator} />
-      <Stack.Screen name="Tu Perfil" component={ProfileNavigator}/>
-
+      <Stack.Screen name="Tu Perfil" component={ProfileNavigator} />
     </Stack.Navigator>
+  );
+};
 
-
-  )
-}
-
-export default AppShop
+export default AppShop;
