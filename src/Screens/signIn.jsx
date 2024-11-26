@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet, Pressable, Switch } from 'react-nati
 import { useSignInMutation } from '../Service/authService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../Features/auth/authSlice'; 
-import { insertSession, fetchSession } from '../db/index';  
+import { insertSession, fetchSession, clearSessions } from '../db/index';  
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { colors } from '../Global/colors';
 
@@ -18,29 +18,9 @@ const SignIn = ({ navigation, route }) => {
   const [triggerSignIn, result] = useSignInMutation();
 
   const userSession = useSelector((state) => state.authReducer.user);
+
   const { fromSignUp } = route.params || {}; 
 
-  
-  // useEffect(() => {
-  //   const checkSession = async () => {
-  //     try {
-  //       const session = await fetchSession();
-  //       console.log('Sesión encontrada:', session);
-  //       if (session.length > 0) {
-  //         const { email, localId, idToken } = session[0];
-  //         dispatch(setUser({ email, localId, idToken }));
-  //         navigation.navigate('Cart');
-  //       }
-  //     } catch (error) {
-  //       console.error('Error al obtener la sesión:', error);
-  //     }
-  //   };    
-    
-
-  //   if (!fromSignUp) {
-  //     checkSession();
-  //   }
-  // }, [userSession, fromSignUp, dispatch, navigation]);
 
   useEffect(() => {
     if (result.isSuccess) {
@@ -48,6 +28,9 @@ const SignIn = ({ navigation, route }) => {
       dispatch(setUser(result.data));
       
       if (isEnabled) {
+        clearSessions()
+        .then(()=> console.log('sesion eliminada'))
+        .catch(error=> console.log('error eliminada', error))
         console.log("result data:", result.data)
         insertSession({
           localId: result.data.localId,

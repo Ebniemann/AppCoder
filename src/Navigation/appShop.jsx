@@ -9,11 +9,13 @@ import { useEffect } from "react";
 import { setProfilePicture } from "../Features/auth/authSlice";
 import { useGetProfilePictureQuery } from "../Service/userService";
 import ProfileNavigator from "./userProfileNavigation";
+import { fetchSession } from "../db";
 
 const Stack = createNativeStackNavigator();
 
 const AppShop = () => {
   const dispatch = useDispatch();
+  const user = useSelector(state=> state.authReducer.email)
   const localId = useSelector((state) => state.authReducer.localId);
   const { data: profilePicture } = useGetProfilePictureQuery(localId);
 
@@ -22,6 +24,22 @@ const AppShop = () => {
       dispatch(setProfilePicture(profilePicture.image));
     }
   }, [profilePicture, dispatch]);
+
+useEffect(()=>{
+  if(!user){
+    (async()=> {
+      try{
+        const session = await fetchSession()
+        console.log('sessions', session)
+
+      }
+      catch(error){
+        console.log('error al obtener la sesion', error)
+      }
+
+    })
+  }
+}, [user])
 
   return (
     <Stack.Navigator initialRouteName="Home" screenOptions={({ navigation, route }) => ({
