@@ -1,6 +1,6 @@
 import * as SQLite from "expo-sqlite/legacy";
 
-const db = SQLite.openDatabase("mundogeek.db");
+const db = SQLite.openDatabase("niemann.db");
 
 export const createSessionsTable = () => {
   const promise = new Promise((resolved, rejected) => {

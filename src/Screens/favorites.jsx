@@ -19,7 +19,6 @@ const FavoritesScreen = ({ navigation }) => {
       <Pressable
         style={styles.itemContainer}
         onPress={() => {
-          console.log("Navegando a DetailProduct");
           navigation.navigate("Detalle");
         }}
       >

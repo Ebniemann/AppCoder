@@ -24,7 +24,7 @@ const ListProducts = ({ navigation }) => {
 
 
   const ProductItem = ({ item }) => {
-    console.log(item);
+  
     return (
       <View>
             <Pressable style={styles.productContainer} onPress={() => { dispatch(setProductId(item.id)), navigation.navigate('Detalle del Producto') }} >
