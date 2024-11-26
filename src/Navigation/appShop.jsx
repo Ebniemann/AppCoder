@@ -6,7 +6,7 @@ import AuthNavigator from "./authNavigator";
 import Header from "../Components/header";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { setProfilePicture } from "../Features/auth/authSlice";
+import { setProfilePicture, setUser } from "../Features/auth/authSlice";
 import { useGetProfilePictureQuery } from "../Service/userService";
 import ProfileNavigator from "./userProfileNavigation";
 import { fetchSession } from "../db";
@@ -31,6 +31,9 @@ useEffect(()=>{
       try{
         const session = await fetchSession()
         console.log('sessions', session)
+        if(session.length){
+          dispatch(setUser(session[0]))
+        }
 
       }
       catch(error){

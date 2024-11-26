@@ -40,7 +40,7 @@ export const fetchSession = () => {
           [email,localId, token],
           (_, result) => {
             console.log("Sesiones obtenidas:", result);
-            resolve(result);
+            resolve(result.rows._array);
           },
           (_, result) => {
             console.error("Error en fetchSession:", result);
