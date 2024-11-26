@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
-  tokenId: null,
+  token: null,
   localId: "",
   profilePicture: "",
 };
@@ -12,16 +12,15 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = {
-        email: action.payload.email,
-      };
-      state.tokenId = action.payload.idToken;
+      state.user = action.payload.email
+      state.token = action.payload.idToken;
       state.localId = action.payload.localId;
     },
     logout: (state) => {
       state.user = null;
-      state.tokenId = null;
+      state.token = null;
       state.localId = null;
+      state.profilePicture = "";
     },
     setProfilePicture: (state, action) => {
       state.profilePicture = action.payload;
