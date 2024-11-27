@@ -1,21 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import CameraIcon from '../Components/cameraIcon';
 import { useSelector, useDispatch } from 'react-redux';
 import * as ImagePicker from 'expo-image-picker'
 import { setProfilePicture } from '../Features/auth/authSlice';
 import { colors } from '../Global/colors';
 import { usePutProfilePictureMutation } from '../Service/userService';
+import { useEffect } from 'react';
 
 const UserProfile = () => { 
 
 
   const dispatch=useDispatch()
 
-  const image = useSelector((state)=> state.authReducer.setProfilePicture)
+  const image = useSelector((state)=> state.authReducer.profilePicture)
   const user = useSelector((state)=> state.authReducer.user)
   const localId = useSelector((state)=> state.authReducer.localId)
   const [triggerPicture, result]= usePutProfilePictureMutation()
+  
+  
   const verifyCameraPermissions= async ()=>{
     const {granted }= await ImagePicker.requestCameraPermissionsAsync()
     if(!granted) return false
@@ -23,6 +26,7 @@ const UserProfile = () => {
   }
 
   const pickImage = async() =>{
+
       const permissionsOk = await verifyCameraPermissions()
       if(permissionsOk){
          let result = await ImagePicker.launchCameraAsync(
@@ -36,8 +40,9 @@ const UserProfile = () => {
           }
          )
          if(!result.canceled){
-          dispatch(setProfilePicture(`data:image/jpeg;base64,${result.assets[0].base64}`))
-          triggerPicture({image:`data:image/jpeg;base64,${result.assets[0].base64}`, localId})
+          const base64 = `data:image/jpeg;base64,${result.assets[0].base64}`
+          dispatch(setProfilePicture(base64))
+          triggerPicture({base64, localId})
          }
       }else{
 
@@ -52,7 +57,7 @@ const UserProfile = () => {
     );
   }
 
- 
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Perfil del Usuario</Text>
